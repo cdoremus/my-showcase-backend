@@ -1,18 +1,16 @@
 package org.cdoremus.myshowcase.util;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.UUID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
- * Created by craig on 12/18/16.
+ * Utility functions and constants
  */
 public class WebUtils {
 
-    public static final String CLIENT_BASE_URL = "http://localhost:5000";
+    public static final String CLIENT_BASE_URL = "http://localhost:7000";
 
     private WebUtils(){}
 
