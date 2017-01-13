@@ -107,7 +107,11 @@ public class User  implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        return checkObjectEquals((User) o);
+    }
+
+    private boolean checkObjectEquals(User o) {
+        User user = o;
 
         if (!userId.equals(user.userId)) return false;
         if (!loginId.equals(user.loginId)) return false;
@@ -137,7 +141,7 @@ public class User  implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", createDate=" + createDate +
-                ", items=" + items +
+//                ", items=" + items +
                 '}';
     }
 }
