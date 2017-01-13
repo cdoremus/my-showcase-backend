@@ -44,6 +44,10 @@ gradle-app.setting
 .idea/gradle.xml
 .idea/libraries
 
+# Checkstyle
+.idea/checkstyle-idea.xml
+.idea/misc.xml
+
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
 
@@ -66,3 +70,6 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# dir to upload files during local testing
+upload-dir/
