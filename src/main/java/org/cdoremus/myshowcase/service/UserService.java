@@ -14,13 +14,11 @@ public class UserService {
     private UserRepository repository;
 
     public User findUserByLoginId(String loginId) {
-        User found = repository.findByLoginId(loginId);
-        return found;
+        return  repository.findByLoginId(loginId);
     }
 
     public User findUserById(long userId) {
-        User found = repository.findOne(userId);
-        return found;
+        return repository.findOne(userId);
     }
 
     public User create(User user) {
@@ -30,6 +28,5 @@ public class UserService {
     public User update(User user) {
         return repository.save(user);
     }
-
 
 }
