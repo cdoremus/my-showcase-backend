@@ -1,14 +1,10 @@
 package org.cdoremus.myshowcase.controller;
 
-import org.apache.tomcat.jni.Local;
 import org.cdoremus.myshowcase.TestUtils;
 import org.cdoremus.myshowcase.model.User;
-import org.cdoremus.myshowcase.repository.UserRepository;
 import org.cdoremus.myshowcase.service.UserService;
-import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +18,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
