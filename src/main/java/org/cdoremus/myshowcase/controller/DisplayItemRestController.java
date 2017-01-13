@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,9 +22,11 @@ public class DisplayItemRestController {
     private DisplayItemService service;
 
 
-    @RequestMapping(value="/new", method = { RequestMethod.POST })
-    public ResponseEntity<DisplayItem> createDisplayItem(@RequestBody DisplayItem item) {
-        DisplayItem newItem = service.create(item);
+    @RequestMapping(value="/save", method = { RequestMethod.POST })
+    public ResponseEntity<DisplayItem> saveDisplayItem(
+            @RequestParam("item") DisplayItem item,
+            @RequestParam("loginId") String username) {
+        DisplayItem newItem = service.save(item, username);
         System.out.println("newItem: " + newItem);
         if (newItem == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -38,7 +41,7 @@ public class DisplayItemRestController {
         if (item == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(item, HttpStatus.NOT_FOUND.OK);
+            return new ResponseEntity<>(item, HttpStatus.OK);
         }
     }
 
@@ -48,7 +51,7 @@ public class DisplayItemRestController {
         if (items == null || items.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(items, HttpStatus.NOT_FOUND.OK);
+            return new ResponseEntity<>(items, HttpStatus.OK);
         }
     }
 
@@ -58,7 +61,19 @@ public class DisplayItemRestController {
         if (items == null || items.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(items, HttpStatus.NOT_FOUND.OK);
+            return new ResponseEntity<>(items, HttpStatus.OK);
         }
+    }
+
+    @RequestMapping(value = "/upload", method = { RequestMethod.POST, RequestMethod.OPTIONS })
+    public ResponseEntity<DisplayItem> handleUpload(
+            @RequestParam("uploadedFile") MultipartFile uploadedFile,
+            @RequestParam("loginId") String username) {
+
+        System.out.println("uploadedFile: " + uploadedFile);
+        System.out.println("username: " + username);
+        DisplayItem item = service.uploadFile(uploadedFile, username);
+
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 }
