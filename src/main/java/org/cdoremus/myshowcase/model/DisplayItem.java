@@ -30,7 +30,6 @@ public class DisplayItem {
     @Column(name="filename")
     private String filename;
 
-
     @Column(name="height")
     private int height;
 
@@ -51,7 +50,7 @@ public class DisplayItem {
     private User user;
 
     public DisplayItem() {
-    };
+    }
 
     public DisplayItem(String title, String description, int height, int width, String filename, boolean isVisible, User user) {
         this.title = title;
@@ -142,7 +141,11 @@ public class DisplayItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DisplayItem that = (DisplayItem) o;
+        return checkObjectEquals((DisplayItem) o);
+    }
+
+    private boolean checkObjectEquals(DisplayItem o) {
+        DisplayItem that = o;
 
         if (height != that.height) return false;
         if (width != that.width) return false;
