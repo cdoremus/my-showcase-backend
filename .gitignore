@@ -46,7 +46,6 @@ gradle-app.setting
 
 # Checkstyle
 .idea/checkstyle-idea.xml
-.idea/misc.xml
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
