@@ -24,8 +24,14 @@ public class DisplayItemRestController {
 
     @RequestMapping(value="/save", method = { RequestMethod.POST })
     public ResponseEntity<DisplayItem> saveDisplayItem(
-            @RequestParam("item") DisplayItem item,
+            @RequestParam("itemId") Long itemId,
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
             @RequestParam("loginId") String username) {
+        DisplayItem item = service.findItemById(itemId);
+        item.setTitle(title);
+        item.setDescription(description);
+        System.out.println("Item data: " + item);
         DisplayItem newItem = service.save(item, username);
         System.out.println("newItem: " + newItem);
         if (newItem == null) {
